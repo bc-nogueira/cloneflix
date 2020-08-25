@@ -5,10 +5,16 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 export default ({ title, items }) => {
   const [scrollX, setScrollX] = useState(0);
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(true);
 
   const handleLeftArrow = () => {
     let x = scrollX + Math.round(window.innerWidth / 2);
-    if (x > 0) x = 0;
+    if (x > 0) {
+      x = 0;
+      setShowLeft(false);
+    }
+    setShowRight(true);
     setScrollX(x);
   };
 
@@ -16,21 +22,27 @@ export default ({ title, items }) => {
     let x = scrollX - Math.round(window.innerWidth / 2);
     let listWidth = items.results.length * 150;
     if (window.innerWidth - listWidth > x) {
-      x = window.innerWidth - listWidth - 60;
+      x = window.innerWidth - listWidth;
+      setShowRight(false);
     }
+    setShowLeft(true);
     setScrollX(x);
   };
 
   return (
     <div className="movieRow">
       <h2>{title}</h2>
-      <div className="movieRow-left" onClick={handleLeftArrow}>
-        <NavigateBeforeIcon style={{ fontSize: 50 }} />
-      </div>
-
-      <div className="movieRow-right" onClick={handleRightArrow}>
-        <NavigateNextIcon style={{ fontSize: 50 }} />
-      </div>
+      {showLeft &&
+        <div className="movieRow-left" onClick={handleLeftArrow}>
+          <NavigateBeforeIcon style={{ fontSize: 50 }} />
+        </div>
+      }
+      
+      {showRight &&
+        <div className="movieRow-right" onClick={handleRightArrow}>
+          <NavigateNextIcon style={{ fontSize: 50 }} />
+        </div>
+      }
 
       <div className="moviewRow-listarea">
         <div
