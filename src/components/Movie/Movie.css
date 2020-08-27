@@ -1,4 +1,4 @@
-.movieRow-item {
+.movie-item {
   position: relative;
   display: block;
   flex: 1 1 0px;
@@ -9,28 +9,63 @@
   margin: 0 3px;
 }
 
-.movieRow-list:focus-within .movieRow-item,
-.movieRow-list:hover .movieRow-item {
+.movieRow-list:focus-within .movie-item,
+.movieRow-list:hover .movie-item {
   transform: translateX(-25%);
 }
 
-.movieRow-item:focus ~ .movieRow-item,
-.movieRow-item:hover ~ .movieRow-item {
+.movie-item:focus ~ .movie-item,
+.movie-item:hover ~ .movie-item {
   transform: translateX(25%);
 }
 
-.movieRow-list .movieRow-item:focus,
-.movieRow-list .movieRow-item:hover {
+.movieRow-list .movie-item:focus,
+.movieRow-list .movie-item:hover {
   transform: scale(1.5);
   z-index: 1;
 }
 
-.movieRow-item img {
+.movie-item img {
   display: block;
   max-width: 200px;
   max-height: 285px;
 }
 
-.movieRow-item img:hover {
+.movie-item img:hover {
+  transform: scale(1);
+}
+
+.movie-info {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  padding: 0 10px 10px 10px;
+  background: linear-gradient(to top, #000 10%, transparent 90%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-info-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.movie-info-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+}
+
+.movie-info-play,
+.movie-info-add {
+  font-size: 40px!important;
+  transform: scale(0.8);
+  transition: all ease 0.2s!important;
+}
+
+.movie-info-play:hover,
+.movie-info-add:hover {
   transform: scale(1);
 }

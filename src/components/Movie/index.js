@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 import "./Movie.css";
 import Tmdb from "../../api/Tmdb";
@@ -35,7 +37,7 @@ export default ({ item }) => {
 
   return (
     <div
-      className="movieRow-item"
+      className="movie-item"
       onMouseEnter={() => handleMouseEnter(item)}
       onMouseLeave={() => handleMouseLeave()}
     >
@@ -45,36 +47,22 @@ export default ({ item }) => {
       />
 
       {hoveredItem && (
-        <div
-          style={{
-            width: "100%",
-            position: "absolute",
-            zIndex: 2,
-            bottom: 0,
-            paddingRight: "5px",
-          }}
-        >
-          <h1>{hoveredItem.name || hoveredItem.title}</h1>
-
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="movie-info">
+          <div className="movie-info-left">
+            <div className="movie-info-title">{hoveredItem.name || hoveredItem.title}</div>
             <div>
               {mediaType === "tv"
                 ? `${hoveredItem.number_of_seasons} temporadas`
                 : `${hoveredItem.runtime} minutos`}
             </div>
-            <div>Play</div>
           </div>
+
           <div>
-            <div>generos</div>
-            <div>Adicionar</div>
+            <div><PlayCircleOutlineIcon className="movie-info-play" /></div>
+            <div><AddCircleOutlineIcon className="movie-info-add"  /></div>
           </div>
         </div>
       )}
-      {/* <div
-        style={{ position: "absolute", zIndex: 2, top: 0, left: 0 }}
-      >
-        {item.name || item.title}
-      </div> */}
     </div>
   );
 };

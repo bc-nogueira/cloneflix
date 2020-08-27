@@ -4,13 +4,11 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import "./MovieRow.css";
 import Movie from "../Movie";
-import Tmdb from "../../api/Tmdb";
 
 export default ({ title, items }) => {
   const [scrollX, setScrollX] = useState(0);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
-  const [hoveredMovie, setHoveredMovie] = useState(null);
 
   const handleLeftArrow = () => {
     let x = scrollX + Math.round(window.innerWidth / 2);
@@ -31,39 +29,6 @@ export default ({ title, items }) => {
     }
     setShowLeft(true);
     setScrollX(x);
-  };
-
-  const handleMouseEnter = (item) => {
-    console.log("Mouse enter");
-
-    let media_type;
-
-    if (item.media_type) {
-      media_type = item.media_type;
-    } else if (item.first_air_date) {
-      media_type = "tv";
-    } else {
-      media_type = "movie";
-    }
-
-    // alert(media_type);
-
-    const loadInfo = async () => {
-      let hoveredInfo = await Tmdb.getInfo(item.id, media_type);
-
-      setHoveredMovie(hoveredInfo);
-    };
-
-    loadInfo();
-
-    // debugger;
-
-    // console.log("Mouse enter");
-  };
-
-  // Can set that directly on the component
-  const handleMouseLeave = () => {
-    setHoveredMovie(null);
   };
 
   return (
@@ -89,28 +54,6 @@ export default ({ title, items }) => {
           {items.results.length > 0 &&
             items.results.map((item, key) => (
               <Movie key={key} item={item} />
-              // <div
-              //   key={key}
-              //   className="movieRow-item"
-              //   onMouseEnter={() => handleMouseEnter(item)}
-              //   onMouseLeave={handleMouseLeave}
-              // >
-              //   <img
-              //     src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
-              //     alt={item.original_title}
-              //   />
-
-              //   {hoveredMovie &&
-              //     (item.name === hoveredMovie.name ||
-              //       item.title === hoveredMovie.name) && (
-              //       <h1>{hoveredMovie.name}</h1>
-              //     )}
-              //   {/* <div
-              //     style={{ position: "absolute", zIndex: 2, top: 0, left: 0 }}
-              //   >
-              //     {item.name || item.title}
-              //   </div> */}
-              // </div>
             ))}
         </div>
       </div>
