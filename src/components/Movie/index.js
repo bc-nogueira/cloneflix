@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import "./Movie.css";
 import Tmdb from "../../api/Tmdb";
@@ -48,18 +49,30 @@ export default ({ item }) => {
 
       {hoveredItem && (
         <div className="movie-info">
-          <div className="movie-info-left">
-            <div className="movie-info-title">{hoveredItem.name || hoveredItem.title}</div>
+          <div className="movie-main-info">
+            <div className="movie-info-left">
+              <div className="movie-info-title">
+                {hoveredItem.name || hoveredItem.title}
+              </div>
+              <div>
+                {mediaType === "tv"
+                  ? `${hoveredItem.number_of_seasons} temporadas`
+                  : `${hoveredItem.runtime} minutos`}
+              </div>
+            </div>
+
             <div>
-              {mediaType === "tv"
-                ? `${hoveredItem.number_of_seasons} temporadas`
-                : `${hoveredItem.runtime} minutos`}
+              <div>
+                <PlayCircleOutlineIcon className="movie-info-play" />
+              </div>
+              <div>
+                <AddCircleOutlineIcon className="movie-info-add" />
+              </div>
             </div>
           </div>
 
           <div>
-            <div><PlayCircleOutlineIcon className="movie-info-play" /></div>
-            <div><AddCircleOutlineIcon className="movie-info-add"  /></div>
+            <ExpandMoreIcon className="movie-info-expand" />
           </div>
         </div>
       )}
