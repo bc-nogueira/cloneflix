@@ -1,0 +1,36 @@
+.movieRow-item {
+  position: relative;
+  display: block;
+  flex: 1 1 0px;
+  cursor: pointer;
+  transition: transform 0.7s;
+  width: 200px;
+  height: 285px;
+  margin: 0 3px;
+}
+
+.movieRow-list:focus-within .movieRow-item,
+.movieRow-list:hover .movieRow-item {
+  transform: translateX(-25%);
+}
+
+.movieRow-item:focus ~ .movieRow-item,
+.movieRow-item:hover ~ .movieRow-item {
+  transform: translateX(25%);
+}
+
+.movieRow-list .movieRow-item:focus,
+.movieRow-list .movieRow-item:hover {
+  transform: scale(1.5);
+  z-index: 1;
+}
+
+.movieRow-item img {
+  display: block;
+  max-width: 200px;
+  max-height: 285px;
+}
+
+.movieRow-item img:hover {
+  transform: scale(1);
+}
