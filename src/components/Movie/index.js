@@ -9,6 +9,7 @@ import Tmdb from "../../api/Tmdb";
 export default ({ item }) => {
   const [mediaType, setMediaType] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [genres, setGenres] = useState([]);
 
   const handleMouseEnter = (item) => {
     let media;
@@ -21,12 +22,21 @@ export default ({ item }) => {
       media = "movie";
     }
 
-    console.log("Step 2");
-
     const loadInfo = async () => {
       let hoveredInfo = await Tmdb.getInfo(item.id, media);
+
+      let genres = [];
+      let genresLength = hoveredInfo.genres[0].name.length;
+      genres.push(hoveredInfo.genres[0].name);
+      for (let i = 1; i < hoveredInfo.genres.length; i++) {
+        genresLength = genresLength + hoveredInfo.genres[i].name.length;
+        if (genresLength > 14) break;
+        genres.push(hoveredInfo.genres[i].name);
+      }
+
       setHoveredItem(hoveredInfo);
       setMediaType(media);
+      setGenres(genres);
     };
     loadInfo();
   };
@@ -59,6 +69,8 @@ export default ({ item }) => {
                   ? `${hoveredItem.number_of_seasons} temporadas`
                   : `${hoveredItem.runtime} minutos`}
               </div>
+
+              <div>{genres.join(", ")}</div>
             </div>
 
             <div>
