@@ -20,7 +20,7 @@ export default ({ title, items }) => {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listWidth = items.results.length * 150;
+    let listWidth = items.results.length * 200;
     if (window.innerWidth - listWidth > x) {
       x = window.innerWidth - listWidth;
       setShowRight(false);
@@ -32,22 +32,22 @@ export default ({ title, items }) => {
   return (
     <div className="movieRow">
       <h2>{title}</h2>
-      {showLeft &&
+      {showLeft && (
         <div className="movieRow-left" onClick={handleLeftArrow}>
           <NavigateBeforeIcon style={{ fontSize: 50 }} />
         </div>
-      }
-      
-      {showRight &&
+      )}
+
+      {showRight && (
         <div className="movieRow-right" onClick={handleRightArrow}>
           <NavigateNextIcon style={{ fontSize: 50 }} />
         </div>
-      }
+      )}
 
       <div className="moviewRow-listarea">
         <div
           className="movieRow-list"
-          style={{ marginLeft: scrollX, width: items.results.length * 150 }}
+          style={{ marginLeft: scrollX, width: items.results.length * 200 }}
         >
           {items.results.length > 0 &&
             items.results.map((item, key) => (
