@@ -57,7 +57,7 @@
   position: absolute;
   width: 40px;
   height: 285px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0);
   z-index: 99;
   display: flex;
   align-items: center;
@@ -78,7 +78,12 @@
 
 .movieRow:hover .movieRow-left,
 .movieRow:hover .movieRow-right {
-  opacity: 1;
+  opacity: 0.4;
+}
+
+.movieRow-left:hover,
+.movieRow-right:hover {
+  opacity: 0.8 !important;
 }
 
 @media (max-width: 760px) {
