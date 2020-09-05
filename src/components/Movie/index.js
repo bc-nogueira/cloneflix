@@ -6,24 +6,24 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./Movie.css";
 import Tmdb from "../../api/Tmdb";
 
-export default ({ item }) => {
+export default ({ item, onClick }) => {
   const [mediaType, setMediaType] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [genres, setGenres] = useState([]);
 
-  const handleMouseEnter = (item) => {
+  const handleMouseEnter = (hoveredItem) => {
     let media;
 
-    if (item.media_type) {
-      media = item.media_type;
-    } else if (item.first_air_date) {
+    if (hoveredItem.media_type) {
+      media = hoveredItem.media_type;
+    } else if (hoveredItem.first_air_date) {
       media = "tv";
     } else {
       media = "movie";
     }
 
     const loadInfo = async () => {
-      let hoveredInfo = await Tmdb.getInfo(item.id, media);
+      let hoveredInfo = await Tmdb.getInfo(hoveredItem.id, media);
 
       let genres = [];
       let genresLength = hoveredInfo.genres[0].name.length;
@@ -46,6 +46,10 @@ export default ({ item }) => {
     setHoveredItem(null);
   };
 
+  const handleClick = (clickedItem, mediaType) => {
+    onClick(clickedItem, mediaType);
+  };
+
   return (
     <div
       className="movie-item"
@@ -58,15 +62,17 @@ export default ({ item }) => {
       />
 
       {hoveredItem && (
-        <div className="movie-info">
-          <div className="movie-main-info">
-            <div className="movie-info-left">
-              <div className="movie-info-title">
+        <div className="hovered-movie">
+          <div className="hovered-movie-main">
+            <div className="hovered-movie-left">
+              <div className="hovered-movie-title">
                 {hoveredItem.name || hoveredItem.title}
               </div>
               <div>
                 {mediaType === "tv"
-                  ? `${hoveredItem.number_of_seasons} temporadas`
+                  ? `${hoveredItem.number_of_seasons} temporada${
+                      hoveredItem.number_of_seasons !== 1 ? "s" : ""
+                    }`
                   : `${hoveredItem.runtime} minutos`}
               </div>
 
@@ -75,16 +81,19 @@ export default ({ item }) => {
 
             <div>
               <div>
-                <PlayCircleOutlineIcon className="movie-info-play" />
+                <PlayCircleOutlineIcon className="hovered-movie-play" />
               </div>
               <div>
-                <AddCircleOutlineIcon className="movie-info-add" />
+                <AddCircleOutlineIcon className="hovered-movie-add" />
               </div>
             </div>
           </div>
 
           <div>
-            <ExpandMoreIcon className="movie-info-expand" />
+            <ExpandMoreIcon
+              className="hovered-movie-expand"
+              onClick={() => handleClick(hoveredItem, mediaType)}
+            />
           </div>
         </div>
       )}
