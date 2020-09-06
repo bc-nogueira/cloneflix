@@ -1,22 +1,22 @@
-.movieRow {
+.movie-row {
   margin-bottom: 30px;
 }
 
-.movieRow h2 {
+.movie-row h2 {
   margin: 0px 0px 15px 30px;
 }
 
-.movieRow-listarea {
+.movie-row-listarea {
   overflow-x: hidden;
   padding-left: 30px;
 }
 
-.movieRow-list {
+.movie-row-list {
   display: flex;
 }
 
-.movieRow-left,
-.movieRow-right {
+.movie-row-left,
+.movie-row-right {
   position: absolute;
   width: 40px;
   height: 285px;
@@ -31,27 +31,27 @@
   transition: all ease 0.5s;
 }
 
-.movieRow-left {
+.movie-row-left {
   left: 0;
 }
 
-.movieRow-right {
+.movie-row-right {
   right: 0;
 }
 
-.movieRow:hover .movieRow-left,
-.movieRow:hover .movieRow-right {
+.movie-row:hover .movie-row-left,
+.movie-row:hover .movie-row-right {
   opacity: 0.4;
 }
 
-.movieRow-left:hover,
-.movieRow-right:hover {
+.movie-row-left:hover,
+.movie-row-right:hover {
   opacity: 0.8 !important;
 }
 
 @media (max-width: 760px) {
-  .movieRow-left,
-  .movieRow-right {
+  .movie-row-left,
+  .movie-row-right {
     opacity: 1;
   }
 }

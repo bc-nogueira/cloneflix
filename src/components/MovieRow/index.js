@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
-import "./MovieRow.css";
+import "./movie-row.css";
 import Movie from "../Movie";
 
 export default ({ row, title, items, onClick }) => {
@@ -36,21 +36,21 @@ export default ({ row, title, items, onClick }) => {
   };
 
   return (
-    <div className="movieRow">
+    <div className="movie-row">
       <h2>{title}</h2>
       {showLeft && (
-        <div className="movieRow-left" onClick={handleLeftArrow}>
+        <div className="movie-row-left" onClick={handleLeftArrow}>
           <NavigateBeforeIcon style={{ fontSize: 50 }} />
         </div>
       )}
       {showRight && (
-        <div className="movieRow-right" onClick={handleRightArrow}>
+        <div className="movie-row-right" onClick={handleRightArrow}>
           <NavigateNextIcon style={{ fontSize: 50 }} />
         </div>
       )}
-      <div className="movieRow-listarea">
+      <div className="movie-row-listarea">
         <div
-          className="movieRow-list"
+          className="movie-row-list"
           style={{ marginLeft: scrollX, width: items.results.length * 200 }}
         >
           {items.results.length > 0 &&
