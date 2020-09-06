@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Tmdb from "./api/Tmdb";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { TransitionGroup } from "react-transition-group";
 
 import MovieRow from "./components/MovieRow";
@@ -101,7 +102,8 @@ export default () => {
 
       {movieList.length <= 0 && (
         <div className="loading">
-          <img src={require("./images/loading.gif")} alt="loading" />
+          <img src={require("./images/cloneflix.png")} alt="loading" />
+          <CircularProgress className="loading-icon" />
         </div>
       )}
     </div>
