@@ -1,4 +1,5 @@
 import React from "react";
+import CloseIcon from "@material-ui/icons/Close";
 import "./MovieInfo.css";
 
 export default ({ item, mediaType }) => {
@@ -9,8 +10,6 @@ export default ({ item, mediaType }) => {
     genres.push(item.genres[i].name);
   }
 
-  debugger;
-
   let description = item.overview;
   if (description.length > 500) {
     description = description.substring(0, 300) + "...";
@@ -20,15 +19,14 @@ export default ({ item, mediaType }) => {
     <section
       className="movie-info"
       style={{
-        // backgroundSize: "cover",
         backgroundSize: "contain",
         backgroundPosition: "right center",
         backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`,
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="movie-info-vertical">
-        <div className="movie-info-horizontal">
+      <div className="movie-info-horizontal">
+        <div className="movie-info-vertical">
           <div className="movie-info-name">
             {item.original_name || item.title}
           </div>
@@ -56,6 +54,8 @@ export default ({ item, mediaType }) => {
             <strong>Gêneros: </strong>
             {genres.join(", ")}
           </div>
+
+          <CloseIcon style={{ fontSize: 50 }} />
         </div>
       </div>
     </section>

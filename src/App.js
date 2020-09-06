@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Tmdb from "./api/Tmdb";
+import { TransitionGroup } from "react-transition-group";
 
 import MovieRow from "./components/MovieRow";
 import FeaturedMovie from "./components/FeaturedMovie";
 import Header from "./components/Header";
+import MovieInfo from "./components/MovieInfo";
 
 export default () => {
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
   const [blackHeader, setBlackHeader] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [mediaType, setMediaType] = useState(null);
+  const [showingRow, setShowingRow] = useState(null);
 
   useEffect(() => {
     const loadAll = async () => {
@@ -44,13 +49,36 @@ export default () => {
     };
   }, []);
 
+  const handleMovieClick = (clickedItem, mediaType, key) => {
+    setSelectedMovie(null);
+    setSelectedMovie(clickedItem);
+    setMediaType(mediaType);
+    setShowingRow(key);
+  };
+
   return (
     <div className="page">
       <Header black={blackHeader} />
       {featuredData && <FeaturedMovie item={featuredData} />}
       <section className="lists">
         {movieList.map((item, key) => (
-          <MovieRow key={key} title={item.title} items={item.items} />
+          <div key={key}>
+            <MovieRow
+              row={key}
+              title={item.title}
+              items={item.items}
+              onClick={handleMovieClick}
+            />
+            {selectedMovie && showingRow === key ? (
+              <TransitionGroup
+                transitionName="example"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}
+              >
+                <MovieInfo item={selectedMovie} mediaType={mediaType} />
+              </TransitionGroup>
+            ) : null}
+          </div>
         ))}
       </section>
 

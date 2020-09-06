@@ -4,14 +4,11 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import "./MovieRow.css";
 import Movie from "../Movie";
-import MovieInfo from "../MovieInfo";
 
-export default ({ title, items }) => {
+export default ({ row, title, items, onClick }) => {
   const [scrollX, setScrollX] = useState(0);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [mediaType, setMediaType] = useState(null);
 
   const handleLeftArrow = () => {
     let x = scrollX + Math.round(window.innerWidth / 2);
@@ -34,9 +31,8 @@ export default ({ title, items }) => {
     setScrollX(x);
   };
 
-  const handleMovieClick = (clickedItem, mediaType) => {
-    setSelectedMovie(clickedItem);
-    setMediaType(mediaType);
+  const handleClick = (clickedItem, mediaType) => {
+    onClick(clickedItem, mediaType, row);
   };
 
   return (
@@ -59,13 +55,10 @@ export default ({ title, items }) => {
         >
           {items.results.length > 0 &&
             items.results.map((item, key) => (
-              <Movie key={key} item={item} onClick={handleMovieClick} />
+              <Movie key={key} item={item} onClick={handleClick} />
             ))}
         </div>
       </div>
-      {selectedMovie && (
-        <MovieInfo item={selectedMovie} mediaType={mediaType} />
-      )}
     </div>
   );
 };

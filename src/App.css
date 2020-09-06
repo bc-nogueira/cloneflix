@@ -32,3 +32,39 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+/* .example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: all ease 0.2s !important;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: all ease 0.2s !important;
+} */
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+}
