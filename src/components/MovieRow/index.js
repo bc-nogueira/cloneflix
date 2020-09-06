@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
-import "./movie-row.css";
+import "./MovieRow.css";
 import Movie from "../Movie";
 
 export default ({ row, title, items, onClick }) => {
