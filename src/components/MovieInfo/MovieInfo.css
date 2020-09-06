@@ -1,25 +1,23 @@
 .movie-info {
-  /* height: 60vh; */
-  height: 60%;
-  margin-top: 40px;
+  height: 60vh;
+  margin-top: 20px;
 }
 
 .movie-info-horizontal {
   width: inherit;
   height: inherit;
-  background: linear-gradient(to top, #111 10%, transparent 90%);
   display: flex;
 }
 
 .movie-info-vertical {
   width: inherit;
   height: inherit;
-  background: linear-gradient(to right, #111 50%, transparent 70%);
+  background: linear-gradient(to right, #000 52%, transparent 90%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 60px;
-  padding-bottom: 150px;
+  padding-bottom: 50px;
   padding-top: 20px;
 }
 
