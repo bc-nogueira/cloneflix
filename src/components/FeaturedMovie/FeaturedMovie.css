@@ -54,7 +54,7 @@
 }
 
 .featured-watch-btn,
-.my-list-btn {
+.featured-my-list-btn {
   display: inline-block;
   font-size: 20px;
   font-weight: bold;
@@ -67,7 +67,7 @@
 }
 
 .featured-watch-btn:hover,
-.my-list-btn:hover {
+.featured-my-list-btn:hover {
   opacity: 0.7;
 }
 
@@ -76,7 +76,7 @@
   color: #000;
 }
 
-.my-list-btn {
+.featured-my-list-btn {
   background-color: #333;
   color: #fff;
 }
@@ -106,9 +106,15 @@
     margin-right: 30px;
   }
 
+  .featured-watch-btn {
+    margin-bottom: 10px;
+  }
+
   .featured-watch-btn,
-  .my-list-btn {
+  .featured-my-list-btn {
+    width: 60%;
     font-size: 16px;
+    text-align: center;
   }
 
   .featured-genres {

@@ -50,7 +50,7 @@ export default ({ item, mediaType, onClick }) => {
             <a href={`/watch/${item.id}`} className="movie-info-watch-btn">
               &#9658; Assistir
             </a>
-            <a href={`/list/add/${item.id}`} className="my-list-btn">
+            <a href={`/list/add/${item.id}`} className="movie-info-my-list-btn">
               + Minha Lista
             </a>
           </div>

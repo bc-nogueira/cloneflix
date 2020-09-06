@@ -38,7 +38,7 @@ export default ({ item }) => {
             <a href={`/watch/${item.id}`} className="featured-watch-btn">
               &#9658; Assistir
             </a>
-            <a href={`/list/add/${item.id}`} className="my-list-btn">
+            <a href={`/list/add/${item.id}`} className="featured-my-list-btn">
               + Minha Lista
             </a>
           </div>
