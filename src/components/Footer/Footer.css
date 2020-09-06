@@ -1,0 +1,14 @@
+footer {
+  margin: 20px 10px 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-white {
+  color: #fff;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+}

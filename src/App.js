@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Tmdb from "./api/Tmdb";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { TransitionGroup } from "react-transition-group";
 
 import MovieRow from "./components/MovieRow";
 import FeaturedMovie from "./components/FeaturedMovie";
 import Header from "./components/Header";
 import MovieInfo from "./components/MovieInfo";
+import Footer from "./components/Footer";
 
 export default () => {
   const [movieList, setMovieList] = useState([]);
@@ -60,7 +61,7 @@ export default () => {
     setSelectedMovie(null);
     setMediaType(null);
     setShowingRow(null);
-  }
+  };
 
   return (
     <div className="page">
@@ -81,24 +82,18 @@ export default () => {
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={300}
               >
-                <MovieInfo item={selectedMovie} mediaType={mediaType} onClick={handleCloseClick} />
+                <MovieInfo
+                  item={selectedMovie}
+                  mediaType={mediaType}
+                  onClick={handleCloseClick}
+                />
               </TransitionGroup>
             ) : null}
           </div>
         ))}
       </section>
 
-      <footer>
-        Feito com{" "}
-        <span role="img" aria-label="coracao">
-          ❤️
-        </span>{" "}
-        por Breno Nogueira
-        <br />
-        Direitos de imagem para Netflix
-        <br />
-        Dados pegos do site themoviedb.org
-      </footer>
+      <Footer />
 
       {movieList.length <= 0 && (
         <div className="loading">
