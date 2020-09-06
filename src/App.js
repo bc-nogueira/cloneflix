@@ -50,11 +50,16 @@ export default () => {
   }, []);
 
   const handleMovieClick = (clickedItem, mediaType, key) => {
-    setSelectedMovie(null);
     setSelectedMovie(clickedItem);
     setMediaType(mediaType);
     setShowingRow(key);
   };
+
+  const handleCloseClick = () => {
+    setSelectedMovie(null);
+    setMediaType(null);
+    setShowingRow(null);
+  }
 
   return (
     <div className="page">
@@ -75,7 +80,7 @@ export default () => {
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={300}
               >
-                <MovieInfo item={selectedMovie} mediaType={mediaType} />
+                <MovieInfo item={selectedMovie} mediaType={mediaType} onClick={handleCloseClick} />
               </TransitionGroup>
             ) : null}
           </div>

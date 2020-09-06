@@ -2,7 +2,7 @@ import React from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import "./MovieInfo.css";
 
-export default ({ item, mediaType }) => {
+export default ({ item, mediaType, onClick }) => {
   let firstDate = new Date(item.first_air_date || item.release_date);
   let genres = [];
 
@@ -14,6 +14,10 @@ export default ({ item, mediaType }) => {
   if (description.length > 500) {
     description = description.substring(0, 300) + "...";
   }
+
+  const handleClick = () => {
+    onClick();
+  };
 
   return (
     <section
@@ -54,9 +58,8 @@ export default ({ item, mediaType }) => {
             <strong>Gêneros: </strong>
             {genres.join(", ")}
           </div>
-
-          <CloseIcon style={{ fontSize: 50 }} />
         </div>
+        <CloseIcon className="movie-info-close" onClick={handleClick} />
       </div>
     </section>
   );
